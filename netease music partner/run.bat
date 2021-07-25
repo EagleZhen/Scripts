@@ -1,0 +1,1 @@
+python "netease music partner.py"
