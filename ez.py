@@ -8,6 +8,7 @@ import os
 import random
 import tinytag
 import tqdm
+import shutil
 
 def check_force_stop():
 	if (keyboard.is_pressed('capslock')):
@@ -30,7 +31,7 @@ def random_play_song():
 	while (song.find(".mp3")==-1):
 		song=random.choice(file_list)
 
-	#open in netease cloud music
+	#open in the default audio player
 	os.startfile(path+song)
 	# subprocess.Popen(["D:/Program Files/QQPlayer/QQPlayer.exe",path+song])
 
@@ -43,4 +44,6 @@ def random_play_song():
 	# os.system("taskkill /f /im QQPlayer.exe")
 
 def move_file(source,destination):
+	if not os.path.exists(destination):
+		os.mkdir(destination)
 	shutil.move(source,destination)
