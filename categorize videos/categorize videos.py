@@ -10,6 +10,9 @@ location_dict={
 	"UNDERTALE": "Undertale",
 	"GTA5": "GTA 5",
 	"GenshinImpact": "Genshin Impact",
+	"Obduction-Win64-Shipping": "Obduction",
+	"ChildofLight": "Child of Light",
+	"Spectrum": "Spectrum"	
 }
 
 for file in file_list:
