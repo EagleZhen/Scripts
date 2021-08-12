@@ -12,7 +12,8 @@ location_dict={
 	"GenshinImpact": "Genshin Impact",
 	"Obduction-Win64-Shipping": "Obduction",
 	"ChildofLight": "Child of Light",
-	"Spectrum": "Spectrum"	
+	"Spectrum": "Spectrum",
+	"LifeIsStrange":"Life is Strange"
 }
 
 for file in file_list:
