@@ -1,7 +1,7 @@
 import os
 import eyed3
 
-root_path="E:/Data/Cache/Downloads/"
+root_path="E:/Data/Cache/Downloads/Videos/"
 file_list=os.listdir(root_path)
 
 eyed3.log.setLevel("ERROR")

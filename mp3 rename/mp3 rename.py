@@ -1,7 +1,8 @@
 import os
 import eyed3
 
-root_path="C:/Users/User/Desktop/New folder/"
+root_path="E:/Data/Videos/TEMP/"
+# root_path="E:/Data/Cache/Downloads/The Queen of Crows/"
 file_list=os.listdir(root_path)
 
 # eyed3.log.setLevel("ERROR")
