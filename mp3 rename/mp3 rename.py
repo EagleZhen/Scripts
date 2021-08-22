@@ -11,10 +11,14 @@ for file in file_list:
     # print (os.path.splitext(file))
     if (os.path.splitext(file)[1]==".mp3"):
         audio_file=eyed3.load(root_path+os.path.join(file))
+        
         artist=audio_file.tag.artist
+        artist=artist.replace("/",",")
+
         title=audio_file.tag.title
-        # print (file)
-        tmp=(artist+" - "+title).replace("/",",")+".mp3"
+        title=title.replace("/"," ")
+
+        tmp=artist+" - "+title+".mp3"
         # print("wtf",tmp)
 
         if (os.path.exists(root_path+tmp)==0):

@@ -1,7 +1,8 @@
 import os
 import eyed3
 
-root_path="E:/Data/Cache/Downloads/Videos/"
+# root_path="E:/Data/Cache/Downloads/Videos/"
+root_path="E:/Data/Cache/Downloads/The Beautiful Lies/"
 file_list=os.listdir(root_path)
 
 eyed3.log.setLevel("ERROR")
@@ -16,7 +17,7 @@ for file in file_list:
         # print (os.path.join(file))
         audio_file=eyed3.load(root_path+os.path.join(file))
         audio_file.tag.artist=artist
-        audio_file.tag.album=title
+        # audio_file.tag.album=title
         audio_file.tag.title=title
         # if (audio_file.comments!=""):
         #     del audio_file.tag.frame_set[eyed3.id3.frames.COMMENT_FID]
