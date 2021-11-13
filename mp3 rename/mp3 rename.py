@@ -1,7 +1,7 @@
 import os
 import eyed3
 
-root_path="E:/Data/Videos/TEMP/"
+root_path="E:/Data/Cache/Downloads/"
 # root_path="E:/Data/Cache/Downloads/The Queen of Crows/"
 file_list=os.listdir(root_path)
 
@@ -22,7 +22,7 @@ for file in file_list:
         # print("wtf",tmp)
 
         if (os.path.exists(root_path+tmp)==0):
-            # print(tmp)
+            print(tmp)
             os.rename(root_path+os.path.join(file),root_path+tmp)
         elif (os.path.join(file)!=tmp):
             print(file+" file name conflicts")
