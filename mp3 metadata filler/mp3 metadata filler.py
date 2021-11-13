@@ -2,7 +2,7 @@ import os
 import eyed3
 
 # root_path="E:/Data/Cache/Downloads/Videos/"
-root_path="E:/Data/Cache/Downloads/The Beautiful Lies/"
+root_path="E:/Data/Cache/Downloads/周杰伦/"
 file_list=os.listdir(root_path)
 
 eyed3.log.setLevel("ERROR")
@@ -16,7 +16,10 @@ for file in file_list:
         print ("Artist: ",artist," - ","Title: ",title,sep="")
         # print (os.path.join(file))
         audio_file=eyed3.load(root_path+os.path.join(file))
+
+        artist=artist.replace(",","/")
         audio_file.tag.artist=artist
+        
         # audio_file.tag.album=title
         audio_file.tag.title=title
         # if (audio_file.comments!=""):
