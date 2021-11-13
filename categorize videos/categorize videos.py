@@ -13,7 +13,10 @@ location_dict={
 	"Obduction-Win64-Shipping": "Obduction",
 	"ChildofLight": "Child of Light",
 	"Spectrum": "Spectrum",
-	"LifeIsStrange":"Life is Strange"
+	"LifeIsStrange":"Life is Strange",
+	"PCBS":"PC Building Simulator",
+	"java":"Minecraft",
+	"Florence":"Florence"
 }
 
 for file in file_list:
