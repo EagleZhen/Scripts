@@ -10,6 +10,7 @@ import tinytag
 import tqdm
 import shutil
 
+# 按住大写键停止程序
 def check_force_stop():
 	if (keyboard.is_pressed('capslock')):
 		sys.exit("\aSir, I have stopped the program for you.")
@@ -23,6 +24,7 @@ def timer(total_seconds):
 		#print ("\r",int(second/60),":",int(second%60),sep="",end="")
 		time.sleep(1)
 
+# 随机播放音乐
 def random_play_song():
 	path="E:/Data/Music/网易云音乐/"
 	file_list=os.listdir(path)
@@ -43,7 +45,19 @@ def random_play_song():
 	keyboard.send("ctrl+alt+space")
 	# os.system("taskkill /f /im QQPlayer.exe")
 
+# 移动文件，前面是file，后面是folder
 def move_file(source,destination):
-	if not os.path.exists(destination):
-		os.mkdir(destination)
-	shutil.move(source,destination)
+	if (os.path.exists(source)):
+		os.makedirs(destination,exist_ok=True)
+		shutil.move(source,destination)
+	else:
+		print (source + " not")
+
+# 复制文件，前面是file，后面是folder
+# 如果同名会覆盖
+def copy_file(source,destination):
+	if (os.path.exists(source)):
+		os.makedirs(destination,exist_ok=True)
+		shutil.copy(source,destination)
+	else:
+		print (source + " not")
