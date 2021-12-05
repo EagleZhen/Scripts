@@ -2,7 +2,7 @@
 #### 偷懶是人類進步的動力💩
 
 仍有用：
-- [x] backslash to slash："\"轉"/"
+- [x] backslash to slash："\\"轉"/"
 - [x] categorize videos：将游戏录像根据前缀来分类到不同文件夹里面
 - [x] minecraft add textures to json：将minecraft overlay texture pack里的json model自动添加对应的texture
 - [x] move repeated songs：找出同样名字但是不同专辑的歌曲
