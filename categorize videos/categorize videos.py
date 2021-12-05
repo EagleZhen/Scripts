@@ -16,7 +16,8 @@ location_dict={
 	"LifeIsStrange":"Life is Strange",
 	"PCBS":"PC Building Simulator",
 	"java":"Minecraft",
-	"Florence":"Florence"
+	"Florence":"Florence",
+	"scrcpy-noconsole":"Sky - Children of the Light"
 }
 
 for file in file_list:
