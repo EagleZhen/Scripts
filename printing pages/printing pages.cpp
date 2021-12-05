@@ -23,6 +23,7 @@ int main(){
 	printf("Number of pages in one page (1/2) = ");
 	scanf("%d",&m);
 	
+	printf("\n");
 	if (m==1) {
 		if (n%2!=0) {
 			printf("special:\n\n");
@@ -41,8 +42,10 @@ int main(){
 	
 	else {
 		if (n%4!=0) {
-			printf("special:\n\n");
-			for (i=n-n%4+1; i<=n; ++i) printf("%d%c",i,i==n?' ':',');
+			printf("special first:\n\n");
+			for (i=n-n%4+1; i<=min(n,n-n%4+2); ++i) printf("%d ",i);
+			printf("\n\nspecial second:\n\n");
+			for (;i<=n; ++i) printf("%d ",i);
 			printf("\n\n");
 		}
 		
