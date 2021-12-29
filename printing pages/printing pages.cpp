@@ -43,9 +43,9 @@ int main(){
 	else {
 		if (n%4!=0) {
 			printf("special first:\n\n");
-			for (i=n-n%4+1; i<=min(n,n-n%4+2); ++i) printf("%d ",i);
+			for (i=n-n%4+1; i<=min(n,n-n%4+2); ++i) printf("%d%c",i,i==min(n,n-n%4+2)?' ':',');
 			printf("\n\nspecial second:\n\n");
-			for (;i<=n; ++i) printf("%d ",i);
+			for (;i<=n; ++i) printf("%d%c",i,i==n?' ':' ');
 			printf("\n\n");
 		}
 		
