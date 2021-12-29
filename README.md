@@ -10,6 +10,7 @@
 - [x] mp3 rename：根据歌曲信息重命名mp3名字
 - [x] printing pages：想双面打印，但是打印机又不能自动翻面时候 的 打印页面顺序指引
 - [x] rest reminder：隔一段时间就提醒自己休息，顺便随机播放一首歌
+- [x] phone casting cmd：利用scrcpy和sndcpy的指令，方便开启手机无线投屏和投声音
 
 未完成：
 - [ ] monitor the changes of webpages：监视一个网页的更新，像是看看HKOI官网出成绩没有之类的
