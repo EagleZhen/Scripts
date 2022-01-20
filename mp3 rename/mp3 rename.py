@@ -1,8 +1,8 @@
 import os
 import eyed3
 
-root_path="E:/Data/Cache/Downloads/"
-# root_path="E:/Data/Cache/Downloads/The Queen of Crows/"
+root_path=input("Path = ")
+root_path=root_path.replace("\\","/")+"\\"
 file_list=os.listdir(root_path)
 
 # eyed3.log.setLevel("ERROR")
@@ -19,10 +19,10 @@ for file in file_list:
         title=title.replace("/"," ")
 
         tmp=artist+" - "+title+".mp3"
-        # print("wtf",tmp)
 
+        # check name conflicts
         if (os.path.exists(root_path+tmp)==0):
             print(tmp)
             os.rename(root_path+os.path.join(file),root_path+tmp)
-        elif (os.path.join(file)!=tmp):
-            print(file+" file name conflicts")
+        else:
+            print("[ "+file+" ] file name conflicts")
