@@ -17,7 +17,8 @@ location_dict={
 	"PCBS":"PC Building Simulator",
 	"java":"Minecraft",
 	"Florence":"Florence",
-	"scrcpy-noconsole":"Sky - Children of the Light"
+	"Sky":"Sky - Children of the Light",
+	"Phigros":"Phigros"
 }
 
 for file in file_list:
