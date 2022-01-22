@@ -3,14 +3,14 @@
 
 仍有用：
 - [x] backslash to slash："\\"轉"/"
+- [x] casting cmd：利用scrcpy和sndcpy的指令，方便开启手机无线投屏和投声音
 - [x] categorize videos：将游戏录像根据前缀来分类到不同文件夹里面
 - [x] minecraft add textures to json：将minecraft overlay texture pack里的json model自动添加对应的texture
-- [x] move repeated songs：找出同样名字但是不同专辑的歌曲
-- [x] mp3 metadata filler：填入歌曲信息
-- [x] mp3 rename：根据歌曲信息重命名mp3名字
+- [x] move repeated songs：找出同样名字的歌曲
+- [x] mp3 metadata filler：根据歌曲名字填入metadata
+- [x] mp3 rename：根据歌曲metadata重命名mp3名字
 - [x] printing pages：想双面打印，但是打印机又不能自动翻面时候 的 打印页面顺序指引
 - [x] rest reminder：隔一段时间就提醒自己休息，顺便随机播放一首歌
-- [x] phone casting cmd：利用scrcpy和sndcpy的指令，方便开启手机无线投屏和投声音
 
 未完成：
 - [ ] monitor the changes of webpages：监视一个网页的更新，像是看看HKOI官网出成绩没有之类的
