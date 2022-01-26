@@ -5,12 +5,15 @@ using namespace std;
 #define ll long long
 #define sz(x) (int)x.size()
 
-const string scrcpy_path=".\\scrcpy\\";
-const string sndcpy_path=".\\sndcpy\\";
+const string cpp_path="D:\\Github\\Scripts\\casting cmd\\";
+const string scrcpy_path=cpp_path+"scrcpy\\";
+const string sndcpy_path=cpp_path+"sndcpy\\";
 
 int i;
-int device_id;
+int device_id,app_id;
 string tmp;
+fstream file;
+bool video,audio;
 
 vector<string> app= {
 	"0",
@@ -39,83 +42,117 @@ int ask(string question) {
 	return ans;
 }
 
-void choose_device(){
+void choose_device() {
 	//choose device to connect
 	for (i=1; i<sz(device); ++i) cout<<i<<" : "<<device[i].name << " || " << device[i].ip <<endl;
 	device_id=ask("\ndevice = ");
 	print_divider();
 }
 
-void reconnect(){
+void reconnect(bool asked) {
 	//connect phone wirelessly
-	fstream file("wireless debugging port.txt");
 
 	//list out the devices connected
 	chdir(scrcpy_path.c_str());
 	system("adb devices");
-	
-	if (ask("reconnect? (1/0) = ")==1) {
+
+	if (asked || ask("reconnect? (1/0) = ")==1) {
 		//change the connection method from USB to TCP through port 5555
 		if (device_id==1) {
-			system("adb -s e718ad0 tcpip 5555");
 			device[device_id].port="5555";
+			system("adb -s e718ad0 tcpip 5555");
 		}
 
 		else if (device_id==2) {
-			printf("\nPort = ");
-			cin >> device[device_id].port;
-			file << device[device_id].port;
+			if (asked==0) {
+				printf("\nPort = ");
+				cin >> device[device_id].port;
+			}
+		
+			tmp="adb connect "+device[device_id].ip+":"+device[device_id].port;
+			system(tmp.c_str());
 		}
-		tmp="adb connect "+device[device_id].ip+":"+device[device_id].port;
-		system(tmp.c_str());
 	}
 	//read the port for samsung tab s7 last time used from file
-	else if (device_id==2){
+	else if (device_id==2) {
 		file >> device[device_id].port;
 	}
 	print_divider();
-	chdir("..\\");
 }
 
-void cast_screen(){
+void cast_screen(bool asked) {
 	//cast phone's screen
-	if (ask("screen? (1/0) = ")==1) {
-		for (i=1; i<sz(app); ++i) cout<<i<<" : "<<app[i]<<endl;
-		int app_id = ask("\nID = ");
+	if (asked || (video=ask("screen? (1/0) = "))==1) {
+		if (asked==0) {
+			for (i=1; i<sz(app); ++i) cout<<i<<" : "<<app[i]<<endl;
+			app_id = ask("\nID = ");
+		}
 
 		chdir(scrcpy_path.c_str());
-		
+
 		//'start' run in a new window, can continue the next decision without stucking on this process
 		tmp="start "+app[app_id]+".vbs --window-title "+app[app_id]+" -s "+device[device_id].ip+":"+device[device_id].port;
 		system(tmp.c_str());
-		
+
+		printf("Starting screen cast...\n");
+	}
+	print_divider();
+}
+
+void cast_audio(bool asked) {
+	//cast phone's audio
+	if (asked || (audio=ask("\naudio (1/0) = "))==1) {
+		chdir(sndcpy_path.c_str());
+
+		tmp="start sndcpy "+device[device_id].ip+":"+device[device_id].port;
+		system(tmp.c_str());
+
 		chdir("..\\");
 	}
 	print_divider();
 }
 
-void cast_audio(){
-	//cast phone's audio
-	if (ask("\naudio (1/0) = ")==1) {
-		chdir(sndcpy_path.c_str());
-		
-		tmp="sndcpy "+device[device_id].ip+":"+device[device_id].port;
-		system(tmp.c_str());
-		
-		chdir("..\\");
-	}
+void same_as_before() {
+	if (video) cast_screen(1);
+	if (audio) cast_audio(1);
+}
+
+void read_info() {
+	//port
+	//device id
+	//app id
+	//video
+	//audio
+	chdir(cpp_path.c_str());
+	file.open("info.txt");
+	file >> device[2].port >> device_id >> app_id >> video >> audio;
+	cout << "Device: " << device[device_id].name << "\nApp: " << app[app_id] << "\nVideo: " << video << "\nAudio: " << audio << endl;
 	print_divider();
+	file.close();
+}
+
+void write_info() {
+	chdir(cpp_path.c_str());
+	file.open("info.txt");
+	file << device[2].port << "\n" << device_id << "\n" << app_id << "\n" << video << "\n" << audio << endl;
+	file.close();
 }
 
 int main() {
-	choose_device();
-	reconnect();
-	cast_screen();
-	cast_audio();
-	
+	read_info();
+	if (ask("same as before? (1/0) = ")==1) {
+		same_as_before();
+	} else {
+		choose_device();
+		reconnect(0);
+		cast_screen(0);
+		cast_audio(0);
+	}
+	write_info();
+
 	return 0;
 }
 /*
-C:\Apps\sndcpy-with-adb-windows-v1.0\sndcpy.bat 192.168.1.104:5555
+
 */
 

@@ -1,4 +1,4 @@
-strCommand = "cmd /c Tablet.exe"
+strCommand = "cmd /c Sky.exe --window-title Sky"
 
 For Each Arg In WScript.Arguments
     strCommand = strCommand & " """ & replace(Arg, """", """""""""") & """"
