@@ -1,7 +1,11 @@
 import os
 import eyed3
 
-root_path=input("Path = ")
+f = open('path.txt','r',encoding='utf-8')
+root_path = f.readline()
+print (root_path)
+os.system("pause")
+
 root_path=root_path.replace("\\","/")+"\\"
 file_list=os.listdir(root_path)
 
