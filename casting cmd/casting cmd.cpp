@@ -55,7 +55,8 @@ void reconnect(bool asked) {
 	//list out the devices connected
 	chdir(scrcpy_path.c_str());
 	system("adb devices");
-
+	printf("\nConnecting......\n");
+	
 	if (asked || ask("reconnect? (1/0) = ")==1) {
 		//change the connection method from USB to TCP through port 5555
 		if (device_id==1) {
@@ -113,6 +114,7 @@ void cast_audio(bool asked) {
 }
 
 void same_as_before() {
+	reconnect(1);
 	if (video) cast_screen(1);
 	if (audio) cast_audio(1);
 }
@@ -126,6 +128,8 @@ void read_info() {
 	chdir(cpp_path.c_str());
 	file.open("info.txt");
 	file >> device[2].port >> device_id >> app_id >> video >> audio;
+	
+	//print the infomation for checking
 	cout << "Device: " << device[device_id].name << "\nApp: " << app[app_id] << "\nVideo: " << video << "\nAudio: " << audio << endl;
 	print_divider();
 	file.close();
