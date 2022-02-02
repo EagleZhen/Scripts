@@ -18,6 +18,7 @@ bool video,audio;
 vector<string> app= {
 	"0",
 	"Tablet",
+	"Phone",
 	"Sky",
 };
 
@@ -55,7 +56,6 @@ void reconnect(bool asked) {
 	//list out the devices connected
 	chdir(scrcpy_path.c_str());
 	system("adb devices");
-	printf("\nConnecting......\n");
 	
 	if (asked || ask("reconnect? (1/0) = ")==1) {
 		//change the connection method from USB to TCP through port 5555
@@ -69,10 +69,12 @@ void reconnect(bool asked) {
 				printf("\nPort = ");
 				cin >> device[device_id].port;
 			}
-		
-			tmp="adb connect "+device[device_id].ip+":"+device[device_id].port;
-			system(tmp.c_str());
 		}
+		
+		printf("\nConnecting......\n");
+		
+		tmp="adb connect "+device[device_id].ip+":"+device[device_id].port;
+		system(tmp.c_str());
 	}
 	//read the port for samsung tab s7 last time used from file
 	else if (device_id==2) {
