@@ -56,30 +56,24 @@ void reconnect(bool asked) {
 	//list out the devices connected
 	chdir(scrcpy_path.c_str());
 	system("adb devices");
-	
-	if (asked || ask("reconnect? (1/0) = ")==1) {
-		//change the connection method from USB to TCP through port 5555
-		if (device_id==1) {
-			device[device_id].port="5555";
-			system("adb -s e718ad0 tcpip 5555");
-		}
 
-		else if (device_id==2) {
-			if (asked==0) {
-				printf("\nPort = ");
-				cin >> device[device_id].port;
-			}
-		}
-		
-		printf("\nConnecting......\n");
-		
-		tmp="adb connect "+device[device_id].ip+":"+device[device_id].port;
-		system(tmp.c_str());
+	//change the connection method from USB to TCP through port 5555
+	if (device_id==1) {
+		device[device_id].port="5555";
+		system("adb -s e718ad0 tcpip 5555");
 	}
-	//read the port for samsung tab s7 last time used from file
+
 	else if (device_id==2) {
-		file >> device[device_id].port;
+		if (asked==0) {
+			device[device_id].port = to_string(ask("Port = "));
+		}
 	}
+
+	printf("\nConnecting......\n");
+
+	tmp="adb connect "+device[device_id].ip+":"+device[device_id].port;
+	system(tmp.c_str());
+	
 	print_divider();
 }
 
@@ -123,14 +117,13 @@ void same_as_before() {
 
 void read_info() {
 	//port
-	//device id
 	//app id
 	//video
 	//audio
 	chdir(cpp_path.c_str());
-	file.open("info.txt");
-	file >> device[2].port >> device_id >> app_id >> video >> audio;
-	
+	file.open("info"+to_string(device_id)+".txt");
+	file >> device[2].port >> app_id >> video >> audio;
+
 	//print the infomation for checking
 	cout << "Device: " << device[device_id].name << "\nApp: " << app[app_id] << "\nVideo: " << video << "\nAudio: " << audio << endl;
 	print_divider();
@@ -139,19 +132,20 @@ void read_info() {
 
 void write_info() {
 	chdir(cpp_path.c_str());
-	file.open("info.txt");
-	file << device[2].port << "\n" << device_id << "\n" << app_id << "\n" << video << "\n" << audio << endl;
+	file.open("info"+to_string(device_id)+".txt");
+	file << device[2].port << "\n" << app_id << "\n" << video << "\n" << audio << endl;
 	file.close();
 }
 
 int main() {
+	choose_device();
+	
 	read_info();
 	if (ask("same as before? (1/0) = ")==1) {
 		same_as_before();
 	} else {
-		choose_device();
 		reconnect(0);
-		cast_screen(0);
+		cast_screen(0); 
 		cast_audio(0);
 	}
 	write_info();
