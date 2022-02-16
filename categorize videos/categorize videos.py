@@ -2,24 +2,19 @@ import time
 import ez
 import os
 
-root_path="E:/Data/Videos/Bandicam/"
+f = open('list.txt','r')
+root_path=f.readline().strip()
 file_list=os.listdir(root_path);
 
-location_dict={
-	"Celeste": "Celeste",
-	"UNDERTALE": "Undertale",
-	"GTA5": "GTA 5",
-	"GenshinImpact": "Genshin Impact",
-	"Obduction-Win64-Shipping": "Obduction",
-	"ChildofLight": "Child of Light",
-	"Spectrum": "Spectrum",
-	"LifeIsStrange":"Life is Strange",
-	"PCBS":"PC Building Simulator",
-	"java":"Minecraft",
-	"Florence":"Florence",
-	"Sky":"Sky - Children of the Light",
-	"Phigros":"Phigros"
-}
+location_dict={}
+
+for line in f:
+	video_name = line.split('|')[0].strip()
+	folder_name = line.split('|')[1].strip()
+	# print(video_name," - ", folder_name,sep="")
+	location_dict[video_name]=folder_name
+
+# os.system("pause")
 
 for file in file_list:
 	prefix=file.split(" ",1)[0]
