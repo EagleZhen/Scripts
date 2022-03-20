@@ -12,3 +12,4 @@ java							|Minecraft
 Florence						|Florence
 Sky								|Sky - Children of the Light
 Phigros							|Phigros
+TslGame							|PUBG
