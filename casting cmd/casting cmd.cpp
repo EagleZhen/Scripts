@@ -32,6 +32,34 @@ vector<device_info> device= {
 	{"Samsung Tab S7","192.168.1.103",""}, //tablet
 };
 
+void read_info();
+void write_info();
+
+void choose_device();
+void same_as_before();
+
+int ask(string question);
+
+void cast_screen(bool asked);
+void reconnect(bool asked);
+void cast_audio(bool asked);
+
+int main() {
+	choose_device();
+	
+	read_info();
+	if (ask("same as before? (1/0) = ")==1) {
+		same_as_before();
+	} else {
+		reconnect(0);
+		cast_screen(0); 
+		cast_audio(0);
+	}
+	write_info();
+
+	return 0;
+}
+
 void print_divider() {
 	printf("\n============================\n");
 }
@@ -57,16 +85,15 @@ void reconnect(bool asked) {
 	chdir(scrcpy_path.c_str());
 	system("adb devices");
 
-	//change the connection method from USB to TCP through port 5555
-	if (device_id==1) {
-		device[device_id].port="5555";
-		system("adb -s e718ad0 tcpip 5555");
-	}
+//	if (device_id==1) {
+//		//change the connection method from USB to TCP through port 5555
+//		device[device_id].port="5555";
+//		system("adb -s e718ad0 tcpip 5555");
+//	}
 
-	else if (device_id==2) {
-		if (asked==0) {
-			device[device_id].port = to_string(ask("Port = "));
-		}
+	//ask for new port
+	if (asked==0) {
+		device[device_id].port = to_string(ask("Port = "));
 	}
 
 	printf("\nConnecting......\n");
@@ -122,10 +149,10 @@ void read_info() {
 	//audio
 	chdir(cpp_path.c_str());
 	file.open("info"+to_string(device_id)+".txt");
-	file >> device[2].port >> app_id >> video >> audio;
+	file >> device[device_id].port >> app_id >> video >> audio;
 
 	//print the infomation for checking
-	cout << "Device: " << device[device_id].name << "\nApp: " << app[app_id] << "\nVideo: " << video << "\nAudio: " << audio << endl;
+	cout << "Device: " << device[device_id].name << "\nPort: " << device[device_id].port << "\nApp: " << app[app_id] << "\nVideo: " << video << "\nAudio: " << audio << endl;
 	print_divider();
 	file.close();
 }
@@ -133,25 +160,10 @@ void read_info() {
 void write_info() {
 	chdir(cpp_path.c_str());
 	file.open("info"+to_string(device_id)+".txt");
-	file << device[2].port << "\n" << app_id << "\n" << video << "\n" << audio << endl;
+	file << device[device_id].port << "\n" << app_id << "\n" << video << "\n" << audio << endl;
 	file.close();
 }
 
-int main() {
-	choose_device();
-	
-	read_info();
-	if (ask("same as before? (1/0) = ")==1) {
-		same_as_before();
-	} else {
-		reconnect(0);
-		cast_screen(0); 
-		cast_audio(0);
-	}
-	write_info();
-
-	return 0;
-}
 /*
 
 */
