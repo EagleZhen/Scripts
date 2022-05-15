@@ -3,8 +3,9 @@ import ez
 import os
 
 f = open('list.txt','r')
-root_path=f.readline().strip()
-file_list=os.listdir(root_path);
+source_path=f.readline().rstrip()+"\\"
+destination_path=f.readline().rstrip()+"\\"
+file_list=os.listdir(source_path)
 
 location_dict={}
 
@@ -21,6 +22,6 @@ for file in file_list:
 	# print (prefix)
 	if (prefix in location_dict):
 		location=location_dict[prefix]
-		# print(location)
-		ez.move_file(root_path+file,root_path+"Games/"+location)
+		# print(source_path+file,"\n-> ",destination_path+location)
+		ez.move_file(source_path+file,destination_path+location)
 

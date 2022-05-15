@@ -1,4 +1,5 @@
-E:/Data/Videos/Bandicam/
+E:\Data\Videos\OBS Studio
+E:\Data\Videos\Games
 Celeste							|Celeste
 UNDERTALE						|Undertale
 GTA5							|GTA 5
@@ -13,3 +14,5 @@ Florence						|Florence
 Sky								|Sky - Children of the Light
 Phigros							|Phigros
 TslGame							|PUBG
+DetroitBecomeHuman				|Detroit Become Human
+Overcooked2						|Overcooked 2
