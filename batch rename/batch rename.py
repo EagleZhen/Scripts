@@ -17,7 +17,7 @@ def marking_student_no():
 		#extension name
 		ext=file[-4:]
 		if (ext == ".pdf"):
-			print(file, " -> ", prefix+ext) #for testing
+			print(file, " -> ", prefix+ext)
 			rename(file , prefix+ext)
 
 def bilibili_subtitles():
@@ -47,8 +47,17 @@ def bilibili_subtitles():
 			# print (number)
 
 			if number in dict:
-				# print(file, " -> ", dict[number]+ext) #for testing
+				print(file, " -> ", dict[number]+ext)
 				rename(file , dict[number]+ext)
+
+def remove_bandicam_prefix():
+	#将以前旧的bandicam录像文件的前缀bandicam删掉，和obs studio统一
+	for file in file_list:
+		prefix=file[:8]
+		if (prefix == "bandicam"):
+			new_name = file.replace("bandicam","")
+			print(file, " -> ", new_name)
+			rename(file , new_name)
 	
 if __name__ == "__main__":
-	bilibili_subtitles()
+	remove_bandicam_prefix()
