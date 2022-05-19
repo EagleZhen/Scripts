@@ -1,1 +1,1 @@
-shutdown /h
+python "schedule shutdown.py"
