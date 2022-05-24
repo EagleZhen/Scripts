@@ -1,4 +1,5 @@
 import os
+import eyed3
 
 root_path=input("Diretory = ")+"\\"
 file_list = os.listdir(root_path)
@@ -62,9 +63,15 @@ def replace_substring_to_specified_substring():
 
 	for file in file_list:
 		#do not make changes to the file extension
-		ext_dot_pos=file.rfind(".")
-		ext=file[ext_dot_pos:]
-		name=file[:ext_dot_pos]
+
+		# ext_dot_pos=file.rfind(".")
+		# ext=file[ext_dot_pos:]
+		# name=file[:ext_dot_pos]
+
+		#更简洁写法
+		name = os.path.splitext(file)[0]
+		ext = os.path.splitext(file)[1]
+
 		# print (name, " | ", ext)
 
 		#add as prefix
@@ -80,7 +87,31 @@ def replace_substring_to_specified_substring():
 		elif (name.find(old_str)!=-1):
 			new_name = name.replace(old_str,new_str)
 			change_list[file]=new_name+ext
+
+def mp3_rename():
+	for file in file_list:
+    	# print (os.path.splitext(file))
+		if (os.path.splitext(file)[1]==".mp3"):
+			audio_file=eyed3.load(root_path+file)
+			
+			artist=audio_file.tag.artist
+			artist=artist.replace("/",",")
+
+			title=audio_file.tag.title
+			title=title.replace("/"," ")
+
+			new_name=artist+" - "+title+".mp3"
+			new_name=new_name.replace("?","？")
+
+			# check name conflicts
+			if (os.path.exists(root_path+new_name)==0):
+				change_list [file] = new_name
+			else:
+				print(f"filename conflicts: \"{file}\" ")
 	
 if __name__ == "__main__":
-	replace_substring_to_specified_substring()
+	# bilibili_subtitles()
+	mp3_rename()
+	# replace_substring_to_specified_substring()
+
 	rename()
