@@ -1,1 +1,1 @@
-python "schedule shutdown.py"
+python "D:\Github\Scripts\schedule shutdown\schedule shutdown.py"

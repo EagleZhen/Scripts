@@ -10,7 +10,7 @@ def	florence_price():
 	# if only need to find the first only, then use soup.find
 	item_price = soup.find_all("div",class_="game_purchase_price price")
 	for i, item in enumerate(item_price):
-		print (f"Price #{i}: {item.text.strip()}")
+		print (f"<Florence> costs {item.text.strip()}")
 		if (i==0): break
 
 if __name__ == "__main__":
