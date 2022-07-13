@@ -1,10 +1,6 @@
 import os
+from sys import setswitchinterval
 import eyed3
-
-root_path=input("Diretory = ")+"\\"
-file_list = os.listdir(root_path)
-# print (file_list)
-change_list = {}
 
 def rename():
 	for name in change_list:
@@ -89,6 +85,8 @@ def replace_substring_to_specified_substring():
 			change_list[file]=new_name+ext
 
 def mp3_rename():
+	# 将mp3文件名改成 artist - song name 格式
+
 	for file in file_list:
     	# print (os.path.splitext(file))
 		if (os.path.splitext(file)[1]==".mp3"):
@@ -110,8 +108,18 @@ def mp3_rename():
 				print(f"filename conflicts: \"{file}\" ")
 	
 if __name__ == "__main__":
-	# bilibili_subtitles()
-	mp3_rename()
-	# replace_substring_to_specified_substring()
+	root_path=input("Diretory = ")+"\\"
+	file_list = os.listdir(root_path)
+	# print (file_list)
+	change_list = {}
+
+	print ("1: 用bilibili下载下来的字幕文件名，把同文件夹下的mp4资源命名")
+	print ("2: 将mp3文件名改成 artist - song name 格式")
+	print ("3: 替换每个文件名的特定字符串，或者在前后插入特定字符串")
+	id = int(input())
+	
+	if (id==1): bilibili_subtitles()
+	elif (id==2): mp3_rename()
+	elif (id==3): replace_substring_to_specified_substring()
 
 	rename()
