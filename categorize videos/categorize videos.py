@@ -2,7 +2,7 @@ import time
 import ez
 import os
 
-f = open('list.txt','r')
+f = open('List.txt','r')
 source_path=f.readline().rstrip()+"\\"
 destination_path=f.readline().rstrip()+"\\"
 file_list=os.listdir(source_path)
@@ -15,13 +15,13 @@ for line in f:
 	# print(video_name," - ", folder_name,sep="")
 	location_dict[video_name]=folder_name
 
-# os.system("pause")
-
 for file in file_list:
 	prefix=file.split(" ",1)[0]
 	# print (prefix)
 	if (prefix in location_dict):
 		location=location_dict[prefix]
 		# print(source_path+file,"\n-> ",destination_path+location)
+		print ("Moving ..... Please wait")
 		ez.move_file(source_path+file,destination_path+location)
 
+os.system("pause")
