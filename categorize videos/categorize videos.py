@@ -16,12 +16,29 @@ for line in f:
 	location_dict[video_name]=folder_name
 
 for file in file_list:
-	prefix=file.split(" ",1)[0]
-	# print (prefix)
-	if (prefix in location_dict):
-		location=location_dict[prefix]
-		# print(source_path+file,"\n-> ",destination_path+location)
-		print ("Moving ..... Please wait")
-		ez.move_file(source_path+file,destination_path+location)
+	prefix = file.split(' ')[0]
+	friend = file.split(' ')[1]
+	# print("wtffffffff",friend)
 
+	# print (prefix)
+	if (prefix in location_dict):																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										
+		location=location_dict[prefix]
+
+		full_destination_path = f"{destination_path}{location}"
+
+		# play with friends
+		if (friend!="S"):
+			full_destination_path+="\\with friends"
+		
+		# single player
+		else:
+			new_file = file.replace("S ","")
+			os.rename(source_path+file, source_path+new_file)
+
+		# print(source_path+file,"\n-> ",full_destination_path)
+
+		print (f"...... Moving \"{new_file}\" ......")
+		ez.move_file(source_path+new_file,full_destination_path)
+
+print("\a")
 os.system("pause")
