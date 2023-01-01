@@ -64,7 +64,7 @@ def replace_substring_to_specified_substring():
 		# ext=file[ext_dot_pos:]
 		# name=file[:ext_dot_pos]
 
-		#更简洁写法
+		# #更简洁写法
 		name = os.path.splitext(file)[0]
 		ext = os.path.splitext(file)[1]
 
@@ -80,9 +80,11 @@ def replace_substring_to_specified_substring():
 			change_list[file]=new_name+ext
 
 		#replace an existing substring
-		elif (name.find(old_str)!=-1):
-			new_name = name.replace(old_str,new_str)
-			change_list[file]=new_name+ext
+		else:
+			name = file
+			if (name.find(old_str)!=-1):
+				new_name = name.replace(old_str,new_str)
+				change_list[file]=new_name
 
 def mp3_rename():
 	# 将mp3文件名改成 artist - song name 格式
