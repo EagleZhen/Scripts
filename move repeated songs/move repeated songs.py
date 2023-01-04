@@ -5,10 +5,8 @@ import keyboard
 import time
 import ez
 
-path="E:\\Data\\Music\\网易云音乐\\";
-no_of_repeat = " (2)"
-
-print("Number of songs needed to move = ",end="")
+path="C:\\Data\\Music\\网易云音乐\\";
+no_of_repeat = " (1)"
 
 #open everything
 keyboard.send("ctrl+alt+f")
@@ -18,48 +16,39 @@ time.sleep(0.5)
 keyboard.write(path+no_of_repeat)
 time.sleep(1)
 
-# show the number of songs
-numer_of_songs=int(input())
+# focus on the search result
+keyboard.send("ctrl+f")
+keyboard.send("down")
+time.sleep(0.5)
 
-# focus on everything
-keyboard.send("ctrl+alt+f")
-time.sleep(1)
+# copy the paths of all the files
+keyboard.send("ctrl+a")
+keyboard.send("ctrl+shift+c")
+time.sleep(0.5)
 
-for i in range(numer_of_songs):
+file_list = pyperclip.paste().split("\r\n")
+
+for file in file_list:
 	ez.check_force_stop()
-
-	print (i+1)
-
-	# force stop the program
-	ez.check_force_stop()
-
-	# select the first result
-	keyboard.send("ctrl+f")
-	keyboard.send("down")
-	time.sleep(0.5)
-
-	# copy the full name of the file
-	keyboard.send("ctrl+shift+c")
-	time.sleep(0.5)
 
 	# find the actual name of the song without (1)
-	repeated_name=pyperclip.paste().replace("\"","")
-	original_name=repeated_name.replace(no_of_repeat,"")
-	print (original_name)
+	repeated_file_path=file
+	original_file_path=repeated_file_path.replace(no_of_repeat,"")
+	print (original_file_path)
 
 	#move the repetead file
-	source=repeated_name
+	source=repeated_file_path
 	if (os.path.isfile(source)):
-		destination="E:\\Data\\Cache\\Downloads\\repeated\\"
+		destination="C:\\Data\\Cache\\Temp\\repeated\\"
 		ez.move_file(source,destination)
 		print ("repeated file is moved ヾ(￣▽￣)")
 	else:
 		print ("hmm...repeated file not found (⊙_⊙)?")
 
 	#move the original file
-	source=original_name
+	source=original_file_path
 	if (os.path.isfile(source)):
-		destination="E:\\Data\\Cache\\Downloads\\original\\"
+		destination="C:\\Data\\Cache\\Temp\\original\\"
 		ez.move_file(source,destination)
 		print ("original file is moved ヾ(￣▽￣)")
 	else:
@@ -67,6 +56,6 @@ for i in range(numer_of_songs):
 
 	print("*******************************")
 
-	time.sleep(1)
+	# time.sleep(1)
 
 print ("done ヾ(￣▽￣)")
