@@ -4,7 +4,7 @@
 仍有用：
 - [x] backslash to slash："\\"转"/"
 - [x] batch rename：批量命名文件，例如替换字符串、插入前缀和后缀、根据歌曲名字填入metadata
-- [x] casting：利用scrcpy和sndcpy的指令，方便开启Android设备无线投屏和投声音
+- [x] share android screen and audio to pc：python版，利用scrcpy和sndcpy的指令，方便开启Android设备无线投屏和投声音
 - [x] categorize videos：将游戏录像根据前缀来分类到不同文件夹里面
 - [x] j4 to j7：将j4的各种info转成j7，以及搬data
 - [x] minecraft add textures to json：将minecraft overlay texture pack里的json model自动添加对应的texture
@@ -23,3 +23,4 @@
 - [x] google drive click error list：自动清除google drive for desktop一直弹出来的error list（重装以后已经没有再弹出了）
 - [x] J8 transfer subtask：J2搬迁到J8时候填写subtask信息的半自动脚本
 - [x] netease music partner：网易云合伙人打卡脚本
+- [x] casting：C++版，因为不方便就删了，改成了python，利用scrcpy和sndcpy的指令，方便开启Android设备无线投屏和投声音

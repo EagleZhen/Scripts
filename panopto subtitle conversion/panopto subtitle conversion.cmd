@@ -1,1 +1,0 @@
-python "C:\Programming\Github\Scripts\panopto subtitle conversion\panopto subtitle conversion.py" %*

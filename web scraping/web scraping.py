@@ -11,7 +11,7 @@ def	florence_price():
 	item_price = soup.find_all("div",class_="game_purchase_price price")
 	for i, item in enumerate(item_price):
 		print (f"<Florence> costs {item.text.strip()}")
-		if (i==0): break
+		# if (i==0): break
 
 if __name__ == "__main__":
 	florence_price()

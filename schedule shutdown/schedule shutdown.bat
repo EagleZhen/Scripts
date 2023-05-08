@@ -1,1 +1,1 @@
-python "D:\Github\Scripts\schedule shutdown\schedule shutdown.py"
+python "schedule shutdown.bat"

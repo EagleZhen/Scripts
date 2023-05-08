@@ -1449,7 +1449,7 @@ That's all there is to it!
 
 ==============================================================================
 Copyright (c) 1998-2000 Thai Open Source Software Center Ltd and Clark Cooper
-Copyright (c) 2001-2019 Expat maintainers
+Copyright (c) 2001-2022 Expat maintainers
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -3179,8 +3179,8 @@ COPYRIGHT NOTICE, DISCLAIMER, and LICENSE
 PNG Reference Library License version 2
 ---------------------------------------
 
- * Copyright (c) 1995-2019 The PNG Reference Library Authors.
- * Copyright (c) 2018-2019 Cosmin Truta.
+ * Copyright (c) 1995-2022 The PNG Reference Library Authors.
+ * Copyright (c) 2018-2022 Cosmin Truta.
  * Copyright (c) 2000-2002, 2004, 2006-2018 Glenn Randers-Pehrson.
  * Copyright (c) 1996-1997 Andreas Dilger.
  * Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc.
@@ -3816,7 +3816,7 @@ That's all there is to it!
 
 ==============================================================================
 LZ4 Library
-Copyright (c) 2011-2016, Yann Collet
+Copyright (c) 2011-2020, Yann Collet
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,

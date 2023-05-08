@@ -21,21 +21,29 @@ for file in file_list:
 	# print("wtffffffff",friend)
 
 	# print (prefix)
-	if (prefix in location_dict):																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										
+	if (prefix in location_dict):
 		location=location_dict[prefix]
 
 		full_destination_path = f"{destination_path}{location}"
 
-		# play with friends
-		if (friend!="S"):
+		new_file = file
+
+		# single player
+		if (friend=="F"):
+			new_file = file.replace("F ","")
+			os.rename(source_path+file, source_path+new_file)
 			full_destination_path+="\\with friends"
 		
-		# single player
-		else:
+		# play with friends
+		elif (friend=="S"):
 			new_file = file.replace("S ","")
 			os.rename(source_path+file, source_path+new_file)
+	
+		else:
+			print (f"[!] {new_file} is not yet labelled.")
+			continue
 
-		# print(source_path+file,"\n-> ",full_destination_path)
+		print(source_path+file,"\n-> ",full_destination_path)
 
 		print (f"...... Moving \"{new_file}\" ......")
 		ez.move_file(source_path+new_file,full_destination_path)

@@ -6,7 +6,9 @@ import time
 import ez
 
 path="C:\\Data\\Music\\网易云音乐\\";
-no_of_repeat = " (1)"
+
+print ("Hint: If the file name is like \"五月天 - 明日 (1)\" then input 1")
+no_of_repeat = " ("+input("Number of repeat (1,2,3) = ")+")"
 
 #open everything
 keyboard.send("ctrl+alt+f")

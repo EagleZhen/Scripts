@@ -20,14 +20,14 @@ class software:
 		# print (self.command.replace("<id>",id))
 		os.system(self.command.replace("<id>",id))
 
-scrcpy = software("scrcpy","1.24", "start <name>-noconsole.vbs -s <id>")
-print(scrcpy.command)
+scrcpy = software("scrcpy","1.25", "start <name>-noconsole.vbs -s <id> --window-borderless --no-clipboard-autosync --fullscreen")
+# print(scrcpy.command)
 sndcpy = software("sndcpy","1.1", "start <name> <id>")
 
 class device:
-	def __init__(self, name, ip, port, serial, connection_type, video, audio):
+	def __init__(self, name, ip, ip_id, port, serial, connection_type, video, audio):
 		self.name				= name
-		self.ip					= ip
+		self.ip					= ip[int(ip_id)]
 		self.port				= port
 		self.serial				= serial
 		self.connection_type	= connection_type
@@ -47,9 +47,12 @@ class device:
 	def adb_connect(self):
 		print("Connecting adb...");
 		if (self.connection_type=="WIFI"):
-			# Use IP instead of serial number to specify devices
+			# Use IP instead of serial number to specify devices (Wireless connection)
 			self.id = f"{self.ip}:{self.port}"
 			os.system(f"adb connect {self.id}")
+		else:
+			# Use serial number to specify devices (Wired connection)
+			self.id = f"{self.serial}"
 
 	def share_screen(self):
 		if (self.video):
@@ -69,6 +72,7 @@ def read_device_info():
 				variable_name = list(map(str.strip,line.split('|')))
 			else:
 				device_info = list(map(str.strip,line.split('|')))
+				device_info[1] = device_info[1].split(";")
 				# print(device_info)
 				command = "device_list.append(device("+str(device_info)[1:-1]+"))"
 				# print(command)

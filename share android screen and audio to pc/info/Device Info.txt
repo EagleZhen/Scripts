@@ -1,3 +1,4 @@
-Name			|IP				|Port		|Serial				|Connection Type	|Video		|Audio
-POCO F2 Pro		|192.168.1.102	|37569		|e718ad0			|WIFI				|1			|0
-Samsung Tab S7	|192.168.1.103	|36655		|R52R400VD1A		|WIFI				|1			|1
+Name			|IP											|IP ID	|Port		|Serial				|Connection Type	|Video		|Audio
+POCO F2 Pro		|192.168.1.102;10.13.41.243;192.168.137.116	|0		|39711		|e718ad0			|WIFI				|1			|0
+Galaxy Tab S7	|192.168.1.103;10.13.54.81;192.168.137.133	|0		|38371		|R52R400VD1A		|WIFI				|1			|0
+Galaxy S23+		|192.168.1.100								|0		|38073		|R5CW22G834L		|WIFI				|1			|0

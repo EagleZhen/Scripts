@@ -1,0 +1,1 @@
+python "panopto subtitle conversion.py" %*
