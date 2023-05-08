@@ -1,0 +1,1 @@
+python "convert potplayer bookmark file to youtube timestamps.py" "%~1"
