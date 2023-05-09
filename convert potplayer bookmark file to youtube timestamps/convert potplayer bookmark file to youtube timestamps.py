@@ -10,7 +10,7 @@ def convert_to_youtube_timestamp(line):
 
 		timestamp = int(parts[0].split('=')[1]) // 1000
 		hours = timestamp // 3600
-		minutes = timestamp // 60
+		minutes = timestamp % 3600 // 60
 		seconds = timestamp % 60
 		title = parts[1]
 
