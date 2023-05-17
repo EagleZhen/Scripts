@@ -40,3 +40,7 @@ def copy_file(source,destination):
 		print ("================\n",source, "\nhas been copied to\n",destination,"\n================")
 	else:
 		print (source + " not exist")
+
+def pause(message=None):
+	print (message)
+	os.system("pause")
