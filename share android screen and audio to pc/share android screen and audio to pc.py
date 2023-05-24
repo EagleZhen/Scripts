@@ -15,14 +15,13 @@ class software:
 	def path(self):
 		return f"{root_path}\\{self.name}{self.version}\\"
 
-	def connect(self,id):
+	def connect(self,name):
 		os.chdir(self.path())
-		# print (self.command.replace("<id>",id))
-		os.system(self.command.replace("<id>",id))
+		os.system(self.command.replace("<title>",f"\"{name}\""))
 
-scrcpy = software("scrcpy","1.25", "start <name>-noconsole.vbs -s <id> --window-borderless --no-clipboard-autosync --fullscreen")
+scrcpy = software("scrcpy","2.0", "start <name>-noconsole.vbs -s <title> --window-borderless --no-clipboard-autosync --fullscreen")
 # print(scrcpy.command)
-sndcpy = software("sndcpy","1.1", "start <name> <id>")
+sndcpy = software("sndcpy","1.1", "start <name> <title>")
 
 class device:
 	def __init__(self, name, ip, ip_id, port, serial, connection_type, video, audio):

@@ -1,1 +1,0 @@
-adb logcat > %userprofile%\Desktop\superdisplay_log.log
