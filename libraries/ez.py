@@ -41,9 +41,42 @@ def copy_file(source,destination):
 	else:
 		print (source + " not exist")
 
-def pause(message=None):
-	print (message)
+def rename_file(old_name, new_name, manual=False):
+	try:
+		os.rename(old_name, new_name)
+		if (manual): # if the function is called by user, print a message
+			print(f"File renamed from '{old_name}' to '{new_name}'.")
+	except FileNotFoundError:
+		print(f"Error: File '{old_name}' not found.")
+	except FileExistsError:
+		if (manual):
+			choice = input(f"A file with the name '{new_name}' already exists.\nDo you want to overwrite it? (yes/no): ")
+			if (choice.lower() == 'yes'):
+				os.remove(new_name)  # Remove the existing file
+				os.rename(old_name, new_name)
+				print(f"File renamed from '{old_name}' to '{new_name}'.")
+			else:
+				choice = input("Do you want to enter a new name for the file? (yes/no): ")
+				if (choice.lower() == 'yes'):
+					new_name = input("Enter a new name for the file: ")
+					rename_file(old_name, new_name, manual)  # Recursively call the function with the new name
+				else:
+					# Should not continue, as it may cause program like "categorize videos.py" to handle the file name incorrectly
+					sys.exit("Operation aborted by user.")
+		else:
+			sys.exit(f"Error: A file with the name '{new_name}' already exists.")
+
+def print_message(*args):
+	message = ' '.join(str(arg) for arg in args)
+	print(message)
+
+def pause(*args):
+	print_message(*args)
 	os.system("pause")
+
+def stop(*args):
+	print_message(*args)
+	sys.exit()
 
 def get_repository_name():
 	try:
@@ -68,14 +101,15 @@ def get_repository_name():
 # assume
 	# the name of the info folder is "info for program"
 	# the name of the corresponding folder inside info folder is the same as the script file name
-def get_info_path(program_file_path):
+def get_info_path():
+	program_file_path = os.getcwd()
 	git_repo_name = get_repository_name()
 	info_folder = "info for program"
 	# get the root path of the git repository
 	root,script_folder = program_file_path.split(f"\\{git_repo_name}")
 	script_folder = script_folder[1:] # remove the '\' at the beginning
-	if (script_folder==""): # when the script is in the root folder
-		script_folder = root
+	if (script_folder==""): # when the script is in the root folder of the git repository
+		script_folder = git_repo_name
 
 	# pause("root: "+root)
 	# pause("script: "+script_folder)
@@ -83,3 +117,6 @@ def get_info_path(program_file_path):
 	info_path = f"{root}\\{git_repo_name}\\{info_folder}\\{script_folder}"
 
 	return info_path
+
+if __name__ == "__main__":
+	print (get_info_path(os.path.abspath(__file__)))
