@@ -1,27 +1,32 @@
 import os
 from itertools import islice
+from ez import get_info_path,stop,pause
 
 root_path = os.getcwd()
-info_path = root_path+"\\info"
-# print(root_path)
+info_path = get_info_path()
+# stop(info_path)
 device_list = []
 
 class software:
 	def __init__(self, name, version, command):
 		self.name = name
 		self.version = version
-		self.command = command.replace("<name>",self.name)
+		self.command = command.replace("<name>",self.name) # replace with the software name (e.g. scrcpy,sndcpy)
 
 	def path(self):
-		return f"{root_path}\\{self.name}{self.version}\\"
+		# return f"{root_path}\\{self.name}{self.version}\\"
+		return os.path.join(root_path, self.name+self.version)
 
-	def connect(self,name):
+	def connect(self,id,name=None):
 		os.chdir(self.path())
-		os.system(self.command.replace("<title>",f"\"{name}\""))
+		os_command = self.command.replace("<title>",f"\"{name}\"") # replace with the device name
+		os_command = os_command.replace("<id>",id) # replace with the device id
+		pause (os_command)
+		os.system(os_command)
 
-scrcpy = software("scrcpy","2.0", "start <name>-noconsole.vbs -s <title> --window-borderless --no-clipboard-autosync --fullscreen")
+scrcpy = software("scrcpy","2.0", "start <name>-noconsole.vbs -s <id> --window-title <title> --window-borderless --no-clipboard-autosync --fullscreen")
 # print(scrcpy.command)
-sndcpy = software("sndcpy","1.1", "start <name> <title>")
+sndcpy = software("sndcpy","1.1", "start <name> <id>")
 
 class device:
 	def __init__(self, name, ip, ip_id, port, serial, connection_type, video, audio):
@@ -56,15 +61,15 @@ class device:
 	def share_screen(self):
 		if (self.video):
 			print("Sharing screen...");
-			scrcpy.connect(self.id)
+			scrcpy.connect(self.id, self.name)
 	
 	def share_audio(self):
 		if (self.audio):
 			print("Sharing audio...");
-			sndcpy.connect(self.id)
+			sndcpy.connect(self.id, self.name)
 
 def read_device_info():
-	with open(info_path+"\\Device Info.txt", 'r') as file:
+	with open(os.path.join(info_path,"Device Info.txt"), 'r') as file:
 		variable_name = []
 		for i,line in enumerate(file):
 			if (i==0):
@@ -79,7 +84,7 @@ def read_device_info():
 	
 read_device_info()
 for i,item in enumerate(device_list):
-	print(f"{'='*18}{i}{'='*10}")
+	print(f"{'='*18}{i}{'='*10}") # print with alignment
 	item.print_info()
 
 device_id = int(input("Device ID = "))
