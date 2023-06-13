@@ -1,5 +1,5 @@
 import ez,os,json
-from ez import pause,stop,rename_file
+from ez import pause,stop,move_file,rename_file
 from os.path import join
 from tqdm import tqdm
 
@@ -40,34 +40,28 @@ for file in file_list:
 			continue
 		
 		source = join(source_path,file)
-		dest = join(final_destination_path,new_file)
-		change_list.append((source,dest))
+		dest = final_destination_path
+		change_list.append((source,dest,file,new_file))
 
 current_prefix = ""
-for source,dest in change_list:
+for source,dest,old_file,new_file in change_list:
 	# stop(source,dest)
 	prefix = os.path.basename(source).split(' ')[0]
 	if (prefix != current_prefix):
 		current_prefix = prefix
 		print(f"=====================================\n{location_dict[current_prefix]}\n")
-	print(f"\"{source}\" -> \"{dest}\"")
+	print(f"\"{source}\" \n\tnew location: {dest}")
 
 if (len(change_list)==0):
-	print("No files to be moved.")
-	quit()
+	pause("No files to be moved.")
+	stop()
 
 choice = input("=====================================\nCorrect? (yes/no): ")
 if (choice == "yes"):
-	total_size = 0
-	for source,dest in change_list:
-		total_size += os.path.getsize(source)
-
-	progress_bar = tqdm(total=total_size, unit="B")
-	processed_size = 0
-
 	# update the progress bar whenever a file is moved
-	for source,dest in change_list:
-		rename_file(source, dest)
-		progress_bar.update(os.path.getsize(dest))
+	for source,dest,old_file,new_file in change_list:
+		# print(join(dest,old_file), join(dest, new_file))
+		move_file(source, dest)
+		rename_file(join(dest,old_file), join(dest, new_file))
 
-print("\a")
+pause("====================Done!====================\a")
