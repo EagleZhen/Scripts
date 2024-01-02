@@ -12,14 +12,14 @@ os.system(f"winget search \"{package_keyword}\"")
 print_divider()
 
 package_name = input("Package to be installed: ")
-silent_install = input("Silent install? (y/n): ")
+silent_install = input("Silent install? ( [y] /n ): ")
 
 print_divider()
 
 command = f"winget install {package_name}"
 additional_arguments_for_silent_install = " --silent --accept-package-agreements --accept-source-agreements"
 
-if silent_install == "y":
+if silent_install == "y" or silent_install == "":
     command += additional_arguments_for_silent_install
 
 os.system(command)
