@@ -1,1 +1,0 @@
-python "winget helper.py"
