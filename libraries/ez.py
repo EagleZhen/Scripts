@@ -4,7 +4,6 @@ import time
 import sys
 import keyboard
 import os
-import tqdm
 import shutil
 import subprocess
 
@@ -13,14 +12,6 @@ def check_force_stop():
 	if (keyboard.is_pressed('capslock')):
 		sys.exit("\aSir, I have stopped the program for you.")
 
-def timer(total_seconds):
-	print ("Start countdown from: ",int(total_seconds/60),":",int(total_seconds%60),sep="")
-
-	second=total_seconds
-	for i in tqdm.trange(int(total_seconds)):
-		second-=1
-		#print ("\r",int(second/60),":",int(second%60),sep="",end="")
-		time.sleep(1)
 
 # 移动文件，前面是file，后面是folder
 def move_file(source,destination):

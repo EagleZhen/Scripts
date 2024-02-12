@@ -1,7 +1,6 @@
 import ez,os,json
 from ez import pause,stop,move_file,rename_file
 from os.path import join
-from tqdm import tqdm
 
 # stop(ez.get_info_path())
 info_file_path = join(ez.get_info_path(),"List.json")
