@@ -1,7 +1,5 @@
 import os
-
-def print_divider():
-    print ("\n==================================================\n")
+from ez import print_divider
 
 package_keyword = input("Package to be searched: ")
 

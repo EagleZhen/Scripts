@@ -1,5 +1,5 @@
 import os
-from print_divider import print_divider
+from ez import print_divider
 
 os.system("winget upgrade")
 

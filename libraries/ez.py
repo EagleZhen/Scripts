@@ -18,6 +18,15 @@ def notify(title, message):
     win11toast.notify(title=title, body=message)
 
 
+def print_divider(size=50):
+    """
+    Print ================================================== by default. 
+    
+    The size can be changed.
+    """
+    print(f"\n{"="*size}\n")
+
+
 # 移动文件，前面是file，后面是folder
 def move_file(source, destination):
     if os.path.exists(source):
