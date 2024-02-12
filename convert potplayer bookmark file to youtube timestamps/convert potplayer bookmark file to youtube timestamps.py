@@ -1,5 +1,6 @@
 import sys
 import pyperclip
+from ez import notify
 
 def convert_to_youtube_timestamp(line):
 	parts = line.split('*')
@@ -16,7 +17,7 @@ def convert_to_youtube_timestamp(line):
 
 		converted_timestamp = f"{hours:02d}:{minutes:02d}:{seconds:02d} {title}"
 		
-		print (converted_timestamp)
+		# print (converted_timestamp)
 		return (converted_timestamp)
 	else:
 		return ""
@@ -34,6 +35,7 @@ def convert_pbf_to_youtube_timestamps(pbf_file):
 		result = '\n'.join(timestamps)
 		pyperclip.copy(result)
 		print(result)
+		notify(title="Copied to clipboard", message=f"{result}")
 
 if __name__ == '__main__':
 	# 0 is the script name
