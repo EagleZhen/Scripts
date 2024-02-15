@@ -1,1 +1,0 @@
-python "winget upgrade helper.py"

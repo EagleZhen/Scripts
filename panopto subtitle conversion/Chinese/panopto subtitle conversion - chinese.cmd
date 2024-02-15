@@ -1,1 +1,0 @@
-python "panopto subtitle conversion - chinese.py" %*
