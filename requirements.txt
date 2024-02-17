@@ -1,0 +1,5 @@
+keyboard==0.13.5
+pyperclip==1.8.2
+Send2Trash==1.8.2
+win11toast==0.34
+winsdk==1.0.0b10
