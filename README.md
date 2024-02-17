@@ -9,14 +9,17 @@ $$
 - backslash to slash："\\"转"/"
 - batch rename：批量命名文件，例如替换字符串、插入前缀和后缀、根据歌曲名字填入metadata
 - categorize videos：将游戏录像根据前缀来分类到不同文件夹里面
-- convert potplayer bookmark file to youtube timestamps
+- convert potplayer bookmark file to youtube timestamps：将PotPlayer的Bookmark文件转成YouTube可以识别的Chapters格式
 - google drive click error list：自动清除google drive for desktop一直弹出来的error list
     - 重装整个Google Drive以后就很少再弹出这个error了，不过有时候同步大量小文件的时候还是会出问题
+- infowriter to pbf：将obs插件inforwriter生成的文件转换成PotPlayer可以识别的Bookmark文件，这样在播放视频就可以看到那些在录的时候标记的highlight时刻
 - minecraft add textures to json：将minecraft overlay texture pack里的json model自动添加对应的texture，这样能确保用的是expected的texture，不会因为换了个base texture pack就变了样
-- move repeated songs：找出同样名字的歌曲
+- move repeated songs：以前下载的音乐全部放在同一层文件夹，结果导致很多文件重名，这个脚本就是结合Search Everything的功能，用来找出同样名字的歌曲，然后删掉重复的版本
+    - 后来下载的音乐都按照“歌手/专辑名”的形式来分类以后就比较再遇到这个问题了，但偶尔也还有，因为可能音乐播放器没识别出来这首歌已经下载，于是又重复下载了一遍
 - panopto subtitle conversion：将panopto的字幕转成段落形式方便阅读
 - rest reminder：隔一段时间就提醒自己休息，顺便播放一首歌~
 - schedule shutdown：非常简单的定时休眠指令，方便电脑定时执行来强逼自己晚上不要熬夜玩游戏
+- winget helper：非常非常常用的一个脚本，我现在大部分软件的安装和升级都用winget，而这个脚本就是为了省去我打winget指令的麻烦，只需要打软件名的关键字就可以找到对应pacakage name，然后直接自动安装/升级
 
 ### 很少用 / 没再用
 
@@ -47,6 +50,7 @@ $$
 - GTA 5 lucky draw：GTA 5赌场抽奖，听说有个4秒定律，等4秒再抽就一定会抽到podium car
     - 抽奖结果不是很稳定，而且也很少玩了，所以就不再用了
 
-### 未完成 / 已荒废
+### 未完成
 
 - download songs from youtube and upload it to netease cloud music：从YouTube上面下载音乐并自动上传到网易云云盘
+- backup netease cloud music playlist：备份歌单……以免哪天号没了就什么都没了
