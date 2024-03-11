@@ -24,7 +24,7 @@ def print_divider(size=50):
     
     The size can be changed.
     """
-    print(f"\n{"="*size}\n")
+    print(f"\n{'='*size}\n")
 
 
 # 移动文件，前面是file，后面是folder
