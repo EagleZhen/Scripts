@@ -22,7 +22,7 @@ def parse_infowriter_content(content: str) -> list[tuple]:
     # [1:-1] Discard the meaningless first and last bookmarks that is always 0:00:00
     captured_groups = re.findall(
         r"^(\d+:\d+:\d+).(.*?)$", content, re.MULTILINE)[1:-1]
-    print(captured_groups)
+    # print(captured_groups)
 
     # Convert time markers to milliseconds and store them in a list of tuples
     default_text = "Record Time Marker"
@@ -105,7 +105,10 @@ def read_directory_path_from_json(json_file: str) -> str:
 
 
 if __name__ == "__main__":
-    # Assume the JSON file has a structure like: {"Path": "/path/to/directory"}
+    """
+    Assume the JSON file has a structure like: {"Path": "\\path\\to\\directory"}
+    Must be \\ instead of /, otherwise send2trash will not work
+    """
     info_file_path = os.path.join(ez.get_info_path(), "info.json")
     directory_path = read_directory_path_from_json(info_file_path)
     print(f"Directory path: {directory_path}")
