@@ -20,8 +20,8 @@ def notify(title, message):
 
 def print_divider(size=50):
     """
-    Print ================================================== by default. 
-    
+    Print ================================================== by default.
+
     The size can be changed.
     """
     print(f"\n{'='*size}\n")
@@ -32,7 +32,13 @@ def move_file(source, destination):
     if os.path.exists(source):
         os.makedirs(destination, exist_ok=True)
         shutil.move(source, destination)
-        print("================\n", source, "\nhas been moved to\n", destination, "\n================")
+        print(
+            "================\n",
+            source,
+            "\nhas been moved to\n",
+            destination,
+            "\n================",
+        )
     else:
         print(source + " not exist")
 
@@ -43,7 +49,13 @@ def copy_file(source, destination):
     if os.path.exists(source):
         os.makedirs(destination, exist_ok=True)
         shutil.copy(source, destination)
-        print("================\n", source, "\nhas been copied to\n", destination, "\n================")
+        print(
+            "================\n",
+            source,
+            "\nhas been copied to\n",
+            destination,
+            "\n================",
+        )
     else:
         print(source + " not exist")
 
@@ -65,10 +77,14 @@ def rename_file(old_name, new_name, manual=False):
                 os.rename(old_name, new_name)
                 print(f"File renamed from '{old_name}' to '{new_name}'.")
             else:
-                choice = input("Do you want to enter a new name for the file? (yes/no): ")
+                choice = input(
+                    "Do you want to enter a new name for the file? (yes/no): "
+                )
                 if choice.lower() == "yes":
                     new_name = input("Enter a new name for the file: ")
-                    rename_file(old_name, new_name, manual)  # Recursively call the function with the new name
+                    rename_file(
+                        old_name, new_name, manual
+                    )  # Recursively call the function with the new name
                 else:
                     # Should not continue, as it may cause program like "categorize videos.py" to handle the file name incorrectly
                     sys.exit("Operation aborted by user.")
@@ -94,7 +110,9 @@ def stop(*args):
 def get_repository_name():
     try:
         # get the repository url from local git config file
-        output = subprocess.check_output(["git", "config", "--get", "remote.origin.url"])
+        output = subprocess.check_output(
+            ["git", "config", "--get", "remote.origin.url"]
+        )
         # convert bytes to string and split by '/'
         url_parts = output.decode().strip().split("/")
         repository_name = url_parts[-1].replace(".git", "")
@@ -111,24 +129,31 @@ def get_repository_name():
         return None
 
 
-# get the corresponding info folder for each script
-# assume
-# the name of the info folder is "info for program"
-# the name of the corresponding folder inside info folder is the same as the script file name
 def get_info_path():
+    """
+    Get the corresponding info folder for each script.\n
+    Assume the name of the info folder is "info for program", and the name of the corresponding folder inside info folder is the same as the script file name\n
+    This will also create the required info folder if it does not exist.
+    """
+
     program_file_path = os.getcwd()
     git_repo_name = get_repository_name()
-    info_folder = "info for program"
+    info_folder_name = "info for program"
     # get the root path of the git repository
     root, script_folder = program_file_path.split(f"\\{git_repo_name}")
     script_folder = script_folder[1:]  # remove the '\' at the beginning
-    if script_folder == "":  # when the script is in the root folder of the git repository
+    if (
+        script_folder == ""
+    ):  # when the script is in the root folder of the git repository
         script_folder = git_repo_name
 
     # pause("root: "+root)
     # pause("script: "+script_folder)
 
-    info_path = f"{root}\\{git_repo_name}\\{info_folder}\\{script_folder}"
+    info_path = f"{root}\\{git_repo_name}\\{info_folder_name}\\{script_folder}"
+
+    # create the directory if it does not exist
+    os.makedirs(info_path, exist_ok=True)
 
     return info_path
 
