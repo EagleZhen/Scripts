@@ -45,9 +45,7 @@ def reminder(interval_minutes: float) -> None:
         print_message(f"Next break at {next_rest_time.strftime('%m-%d %H:%M:%S')}.")
 
         sleep(interval_minutes * 60)  # Convert minutes to seconds
-        # come back after 5 minutes
-        back_time = (datetime.now() + timedelta(minutes=5)).strftime("%H:%M")
-        print_message(f"Time to take a break! 🍵", need_notification=True, title="Rest Reminder")
+        print_message(f"Time to take a break! 🍵", write_to_log=False, need_notification=True, title="Rest Reminder")
 
         launch_music_player()
         sleep(15)  # Give me some time to respond before playing songs suddenly 🤣
