@@ -1,0 +1,647 @@
+Course Code
+
+Course Title
+
+Unit(s)
+
+CSCI1020
+
+Hands-on Introduction to C++
+
+1
+
+CSCI1030
+
+Hands-on Introduction to Java
+
+1
+
+CSCI1040
+
+Hands-on Introduction to Python
+
+1
+
+CSCI1110
+
+Introduction to Computing Using C
+
+3
+
+CSCI1120
+
+Introduction to Computing Using C++
+
+3
+
+CSCI1130
+
+Introduction to Computing Using Java
+
+3
+
+CSCI1510
+
+Computer Principles and C Programming
+
+3
+
+CSCI1520
+
+Computer Principles and C++ Programming
+
+3
+
+CSCI1530
+
+Computer Principles and Java Programming
+
+3
+
+CSCI1540
+
+Fundamental Computing With C++
+
+3
+
+CSCI1580
+
+Visual Programming
+
+3
+
+CSCI2100
+
+Data Structures
+
+3
+
+CSCI2120
+
+Introduction to Software Engineering
+
+2
+
+CSCI2510
+
+Computer Organization
+
+3
+
+CSCI2520
+
+Data Structures and Applications
+
+3
+
+CSCI2720
+
+Building Web Applications
+
+3
+
+CSCI3100
+
+Software Engineering
+
+3
+
+CSCI3120
+
+Compiler Construction
+
+3
+
+CSCI3130
+
+Formal Languages and Automata Theory
+
+3
+
+CSCI3150
+
+Introduction to Operating Systems
+
+3
+
+CSCI3160
+
+Design and Analysis of Algorithms
+
+3
+
+CSCI3170
+
+Introduction to Database Systems
+
+3
+
+CSCI3180
+
+Principles of Programming Languages
+
+3
+
+CSCI3190
+
+Introduction to Discrete Mathematics and Algorithms
+
+3
+
+CSCI3220
+
+Algorithms for Bioinformatics
+
+3
+
+CSCI3230
+
+Fundamentals of Artificial Intelligence
+
+3
+
+CSCI3250
+
+Computers and Society
+
+2
+
+CSCI3251
+
+Engineering Practicum
+
+1
+
+CSCI3260
+
+Principles of Computer Graphics
+
+3
+
+CSCI3270
+
+Advanced Programming Laboratory
+
+2
+
+CSCI3280
+
+Introduction to Multimedia Systems
+
+3
+
+CSCI3290
+
+Computational Imaging and Vision
+
+3
+
+CSCI3310
+
+Mobile Computing and Applications Development
+
+3
+
+CSCI3320
+
+Fundamentals of Machine Learning
+
+3
+
+CSCI4120
+
+Principles of Computer Game Software
+
+3
+
+CSCI4130
+
+Introduction to Cyber Security
+
+3
+
+CSCI4140
+
+Open-Source Software Project Development
+
+3
+
+CSCI4160
+
+Distributed and Parallel Computing
+
+3
+
+CSCI4180
+
+Introduction to Cloud Computing and Storage
+
+3
+
+CSCI4190
+
+Introduction to Social Networks
+
+3
+
+CSCI4230
+
+Computational Learning Theory
+
+3
+
+CSCI4250
+
+Online Algorithms for Machine Learning and Optimization
+
+3
+
+CSCI4430
+
+Data Communication and Computer Networks
+
+3
+
+CSCI4998
+
+Final Year Project I
+
+3
+
+CSCI4999
+
+Final Year Project II
+
+3
+
+CSCI5010
+
+Practical Computational Geometry Algorithms
+
+3
+
+CSCI5030
+
+Machine Learning Theory
+
+3
+
+CSCI5050
+
+Bioinformatics and Computational Biology
+
+3
+
+CSCI5120
+
+Advanced Topics in Database Systems
+
+3
+
+CSCI5150
+
+Machine Learning Algorithms and Applications
+
+3
+
+CSCI5160
+
+Advanced Algorithms
+
+3
+
+CSCI5170
+
+Theory of Computation Complexity
+
+3
+
+CSCI5180
+
+Techniques for Data Mining
+
+3
+
+CSCI5210
+
+Advanced Computer Graphics and Visualization
+
+3
+
+CSCI5240
+
+Combinatorial Search and Optimization with Constraints
+
+3
+
+CSCI5250
+
+Information Retrieval and Search Engines
+
+3
+
+CSCI5280
+
+Image Processing and Computer Vision
+
+3
+
+CSCI5320
+
+Topics in Graph Algorithms
+
+3
+
+CSCI5350
+
+Advanced Topics in Game Theory
+
+3
+
+CSCI5390
+
+Advanced GPU Programming
+
+3
+
+CSCI5440
+
+Theory of Cryptography
+
+3
+
+CSCI5460
+
+Virtual Reality
+
+3
+
+CSCI5470
+
+Computer and Network Security
+
+3
+
+CSCI5510
+
+Big Data Analytics
+
+3
+
+CSCI5550
+
+Advanced File and Storage Systems
+
+3
+
+CSCI5570
+
+Large Scale Data Processing Systems
+
+3
+
+CSCI5580
+
+Online Algorithms for Machine Learning and Optimizations
+
+3
+
+CSCI5590
+
+Advanced Topics in Blockchain
+
+3
+
+CSCI5600
+
+Advanced Topics in Distributed Systems
+
+3
+
+CSCI5610
+
+Advanced Data Structures
+
+3
+
+CSCI5620
+
+Algorithms for Data Science
+
+3
+
+CSCI5630
+
+Advanced Topics in Graph Mining
+
+3
+
+CSCI5640
+
+Natural Language Processing
+
+3
+
+CSCI5650
+
+Graph Neural Networks
+
+3
+
+ENGG1310
+
+Engineering Physics: Electromagnetics, Optics and Modern Physics
+
+3
+
+ENGG1820
+
+Engineering Internship
+
+1
+
+ENGG2020
+
+Digital Logic and Systems
+
+3
+
+ENGG2440
+
+Discrete Mathematics for Engineers
+
+3
+
+ENGG2760
+
+Probability for Engineers
+
+2
+
+ENGG2780
+
+Statistics for Engineers
+
+2
+
+ENGG3802
+
+Introduction to Engineering Entrepreneurship
+
+1
+
+ENGG3803
+
+Engineering Entrepreneurship Development Project
+
+2
+
+ENGG5102
+
+Advanced Algorithms
+
+3
+
+ENGG5103
+
+Techniques for Data Mining
+
+3
+
+ENGG5104
+
+Image Processing and Computer Vision
+
+3
+
+ENGG5105
+
+Computer and Network Security
+
+3
+
+ENGG5106
+
+Information Retrieval and Search Engines
+
+3
+
+ENGG5108
+
+Big Data Analytics
+
+3
+
+ENGG5781
+
+Matrix Analysis and Computations
+
+3
+
+ESTR1003
+
+Engineering Physics: Electromagnetics, Optics and Modern Physics
+
+3
+
+ESTR1100
+
+Introduction to Computing Using C++
+
+3
+
+ESTR1102
+
+Introduction to Computing Using Java
+
+3
+
+ESTR2004
+
+Discrete Mathematics for Engineers
+
+3
+
+ESTR2018
+
+Probability for Engineers
+
+2
+
+ESTR2020
+
+Statistics for Engineers
+
+2
+
+ESTR2102
+
+Data Structures
+
+3
+
+ESTR2104
+
+Digital Logic and Systems
+
+3
+
+ESTR2106
+
+Building Web Applications
+
+3
+
+ESTR3102
+
+Introduction to Operating Systems
+
+3
+
+ESTR3104
+
+Design and Analysis of Algorithms
+
+3
+
+ESTR3106
+
+Principles of Programming Languages
+
+3
+
+ESTR3108
+
+Fundamentals of Artificial Intelligence
+
+3
+
+ESTR3110
+
+Algorithms for Bioinformatics
+
+3
+
+ESTR4104
+
+Distributed and Parallel Computing
+
+3
+
+ESTR4106
+
+Introduction to Cloud Computing and Storage
+
+3
+
+ESTR4120
+
+Data Communication and Computer Networks
+
+3
+
+ESTR4122
+
+Online Algorithms for Machine Learning and Optimization
+
+3
