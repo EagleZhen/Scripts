@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from ez import notify, print_divider, get_info_path
 from os.path import join
 
+
 def print_message(message, write_to_log=True, need_notification=False, title=""):
     # Show the timestamps for the corresponding status code
     current_datetime = datetime.now()
@@ -27,9 +28,15 @@ def launch_music_player() -> None:
     subprocess.Popen(music_player_path)
 
 
+def launch_browser() -> None:
+    # r"" is used to convert the string to raw string
+    music_player_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+    subprocess.Popen(music_player_path)
+
+
 def play_next_song() -> None:
     # Press "Ctrl+Alt+Right Arrow" to play the next song in my music player
-    send('ctrl+alt+right')
+    send("ctrl+alt+right")
 
 
 def lock_screen():
@@ -45,28 +52,39 @@ def reminder(interval_minutes: float) -> None:
         print_message(f"Next break at {next_rest_time.strftime('%m-%d %H:%M:%S')}.")
 
         sleep(interval_minutes * 60)  # Convert minutes to seconds
-        print_message(f"Time to take a break! 🍵", write_to_log=False, need_notification=True, title="Rest Reminder")
+        print_message(
+            f"Time to take a break! 🍵",
+            write_to_log=False,
+            need_notification=True,
+            title="Rest Reminder",
+        )
 
-        launch_music_player()
+        launch_browser()
+        # launch_music_player()
         sleep(15)  # Give me some time to respond before playing songs suddenly 🤣
-        play_next_song()
+        # play_next_song()
         print_message("Playing the next song.", write_to_log=False)
 
         sleep(15)
         print_message("Locking the screen...", write_to_log=False)
         lock_screen()
 
-        sleep(5*60)  # 5 minutes break
+        sleep(5 * 60)  # 5 minutes break
 
-log_file_path = join(get_info_path(),"log.txt")
+
+log_file_path = join(get_info_path(), "log.txt")
 
 if __name__ == "__main__":
     interval_minutes = float(input("Enter the reminder interval in minutes: "))
-    
+
     # separate the logs for each run
     with open(log_file_path, "a", encoding="utf-8") as log:
         log.write(f"{'='*10}")
-        log.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " | " + f"Rest reminder started with interval of {interval_minutes} minutes")
+        log.write(
+            datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            + " | "
+            + f"Rest reminder started with interval of {interval_minutes} minutes"
+        )
         log.write(f"{'='*10}\n")
-    
+
     reminder(interval_minutes)
