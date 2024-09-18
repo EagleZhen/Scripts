@@ -76,7 +76,8 @@ def write_to_pbf(sorted_time_markers: list, output_file: str) -> None:
     with open(output_file, "w", encoding="utf-8") as file:
         file.write("[Bookmark]\n")
         for i, (ms, text) in enumerate(sorted_time_markers):
-            file.write(f"{i}={ms}*{text}*\n")
+            adjusted_ms = max(0, ms - 10000)  # subtract 10 seconds to get better start time, as usually the time marker is the end of a moment
+            file.write(f"{i}={adjusted_ms}*{text}*\n")
 
 
 def convert_infowriter_to_pbf(input_file: str, output_file: str) -> None:
@@ -85,6 +86,7 @@ def convert_infowriter_to_pbf(input_file: str, output_file: str) -> None:
         content = file.read()
 
     sorted_time_markers = parse_infowriter_content(content)
+    # print ("sorted_time_markers", sorted_time_markers)
     if (
         sorted_time_markers != []
     ):  # Only write to .pbf if there are meaningful time markers
