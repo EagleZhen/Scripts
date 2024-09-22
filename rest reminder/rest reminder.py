@@ -7,41 +7,38 @@ from ez import notify, print_divider, get_info_path
 from os.path import join
 
 # r"" is used to convert the string to raw string
-MUSIC_PLAYER_PATH = r"C:\Program Files (x86)\NetEase\CloudMusic\cloudmusic.exe"
 BROWSER_PATH = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+LOG_FILE_PATH = join(get_info_path(), "log.txt")
 
 
-def print_message(message, write_to_log=True, need_notification=False, title=""):
-    # Show the timestamps for the corresponding status code
+def print_message(message, write_to_log=True, need_notif=False, notif_title=""):
     current_datetime = datetime.now()
     formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
-    # print timestamps with the message
     print(formatted_datetime, "|", message)
 
     if write_to_log:
-        with open(log_file_path, "a", encoding="utf-8") as log:
+        with open(LOG_FILE_PATH, "a", encoding="utf-8") as log:
             log.write(formatted_datetime + " | " + message + "\n")
 
-    if need_notification is True:
-        notify(title=title, message=message)
-
-
-def launch_music_player() -> None:
-    subprocess.Popen(MUSIC_PLAYER_PATH)
+    if need_notif is True:
+        notify(title=notif_title, message=message)
 
 
 def launch_browser() -> None:
-    # Open a new tab rather than a new window for easier closing
+    """
+    Open a new tab rather than a new window for easier closing
+    """
     subprocess.Popen([BROWSER_PATH, "--new-tab"])
 
 
 def play_next_song() -> None:
-    # Press "Ctrl+Alt+Right Arrow" to play the next song in my music player
+    """
+    Press "Ctrl+Alt+Right Arrow" to play the next song in my music player
+    """
     send("ctrl+alt+right")
 
 
 def lock_screen():
-    # Locks the screen on Windows
     ctypes.windll.user32.LockWorkStation()
 
 
@@ -56,30 +53,23 @@ def reminder(interval_minutes: float) -> None:
         print_message(
             f"Time to take a break! 🍵",
             write_to_log=False,
-            need_notification=True,
-            title="Rest Reminder",
+            need_notif=True,
+            notif_title="Rest Reminder",
         )
 
         launch_browser()
-        # launch_music_player()
-        sleep(15)  # Give me some time to respond before playing songs suddenly 🤣
-        # play_next_song()
-        print_message("Playing the next song.", write_to_log=False)
-
-        sleep(15)
+        sleep(30)  # 30 second buffer time to wrap up the current task
         print_message("Locking the screen...", write_to_log=False)
         lock_screen()
 
         sleep(5 * 60)  # 5 minutes break
 
 
-log_file_path = join(get_info_path(), "log.txt")
-
 if __name__ == "__main__":
     interval_minutes = float(input("Enter the reminder interval in minutes: "))
 
     # separate the logs for each run
-    with open(log_file_path, "a", encoding="utf-8") as log:
+    with open(LOG_FILE_PATH, "a", encoding="utf-8") as log:
         log.write(f"{'='*10}")
         log.write(
             datetime.now().strftime("%Y-%m-%d %H:%M:%S")
