@@ -6,6 +6,10 @@ from datetime import datetime, timedelta
 from ez import notify, print_divider, get_info_path
 from os.path import join
 
+# r"" is used to convert the string to raw string
+MUSIC_PLAYER_PATH = r"C:\Program Files (x86)\NetEase\CloudMusic\cloudmusic.exe"
+BROWSER_PATH = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+
 
 def print_message(message, write_to_log=True, need_notification=False, title=""):
     # Show the timestamps for the corresponding status code
@@ -23,15 +27,12 @@ def print_message(message, write_to_log=True, need_notification=False, title="")
 
 
 def launch_music_player() -> None:
-    # r"" is used to convert the string to raw string
-    music_player_path = r"C:\Program Files (x86)\NetEase\CloudMusic\cloudmusic.exe"
-    subprocess.Popen(music_player_path)
+    subprocess.Popen(MUSIC_PLAYER_PATH)
 
 
 def launch_browser() -> None:
-    # r"" is used to convert the string to raw string
-    music_player_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
-    subprocess.Popen(music_player_path)
+    # Open a new tab rather than a new window for easier closing
+    subprocess.Popen([BROWSER_PATH, "--new-tab"])
 
 
 def play_next_song() -> None:
