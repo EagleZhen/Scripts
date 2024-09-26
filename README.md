@@ -4,6 +4,11 @@ $$
 追(tou)求(lan)效(mo)率(yu)是进步的动力💩
 $$
 
+##### Setup
+- add the directory of `\libraries` to PYTHONPATH to use some utility functions in `ez.py`
+
+---
+
 ### 仍有用
 
 - backslash to slash："\\"转"/"
