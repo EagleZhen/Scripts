@@ -1,7 +1,7 @@
 from time import sleep
+import webbrowser
 from keyboard import send
 import ctypes
-import subprocess
 from datetime import datetime, timedelta
 from ez import notify, print_divider, get_info_path
 from os.path import join
@@ -26,9 +26,9 @@ def print_message(message, write_to_log=True, need_notif=False, notif_title=""):
 
 def launch_browser() -> None:
     """
-    Open a new tab rather than a new window for easier closing
+    Open a new tab with a random image from Unsplash
     """
-    subprocess.Popen([BROWSER_PATH, "--new-tab"])
+    webbrowser.open_new_tab("https://unsplash.it/1920/1080?random")
 
 
 def play_next_song() -> None:
