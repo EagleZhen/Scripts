@@ -5,6 +5,7 @@ import ctypes
 from datetime import datetime, timedelta
 from ez import notify, print_divider, get_info_path
 from os.path import join
+from inflection import ordinalize
 
 # r"" is used to convert the string to raw string
 BROWSER_PATH = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
@@ -43,13 +44,17 @@ def lock_screen():
 
 
 def reminder(interval_minutes: float) -> None:
+    break_count = 0
+    
     while True:
         print_divider()
 
         next_rest_time = datetime.now() + timedelta(minutes=interval_minutes)
-        print_message(f"Next break at {next_rest_time.strftime('%m-%d %H:%M:%S')}.")
+        print_message(f"The {ordinalize(break_count)} break is scheduled at {next_rest_time.strftime('%m-%d %H:%M:%S')}.")
 
         sleep(interval_minutes * 60)  # Convert minutes to seconds
+        
+        break_count += 1
         print_message(
             f"Time to take a break! 🍵",
             write_to_log=False,
