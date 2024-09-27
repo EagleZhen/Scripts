@@ -50,7 +50,7 @@ def reminder(interval_minutes: float) -> None:
         print_divider()
 
         next_rest_time = datetime.now() + timedelta(minutes=interval_minutes)
-        print_message(f"The {ordinalize(break_count)} break is scheduled at {next_rest_time.strftime('%m-%d %H:%M:%S')}.")
+        print_message(f"The {ordinalize(break_count+1)} break is scheduled at {next_rest_time.strftime('%m-%d %H:%M:%S')}.")
 
         sleep(interval_minutes * 60)  # Convert minutes to seconds
         
