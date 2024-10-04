@@ -30,7 +30,7 @@ def parse_infowriter_content(content: str) -> list[tuple]:
     marker_content = None
     time_markers = []
     for line in content.split("\n"):
-        if line == "":
+        if line == "" or line.startswith("HOTKEY: @ "): # Skip empty lines and hotkey specific events (if any, which can be turned off in the infowriter settings)
             marker_content = ""
         elif (
             line.startswith("EVENT:START RECORDING")
