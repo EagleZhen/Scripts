@@ -10,7 +10,7 @@ from inflection import ordinalize
 # r"" is used to convert the string to raw string
 BROWSER_PATH = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 LOG_FILE_PATH = join(get_info_path(), "log.txt")
-
+print (LOG_FILE_PATH)
 
 def print_message(message, write_to_log=True, need_notif=False, notif_title=""):
     current_datetime = datetime.now()
@@ -29,7 +29,7 @@ def launch_browser() -> None:
     """
     Open a new tab with a random image from Unsplash
     """
-    webbrowser.open_new_tab("https://unsplash.it/1920/1080?random")
+    webbrowser.open_new_tab("https://unsplash.it/3840/2160?random")
 
 
 def play_next_song() -> None:
