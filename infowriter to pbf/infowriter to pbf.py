@@ -130,6 +130,8 @@ def batch_convert_infowriter_to_pbf(directory_path: str) -> None:
     if confirm.lower() != "y":
         print("Skipping deletion...")
         return
+    
+    print("infowriter_file_list\n", infowriter_file_list)
 
     send2trash(infowriter_file_list)
     print("Moved .inforwriter files to trash.")
@@ -148,6 +150,7 @@ if __name__ == "__main__":
     Must be \\ instead of /, otherwise send2trash will not work
     """
     info_file_path = os.path.join(ez.get_info_path(), "info.json")
+    print(f"Info file path: {info_file_path}")
     directory_path = read_directory_path_from_json(info_file_path)
     print(f"Directory path: {directory_path}")
     batch_convert_infowriter_to_pbf(directory_path)

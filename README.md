@@ -6,6 +6,7 @@ $$
 
 ##### Setup
 - add the directory of `\libraries` to PYTHONPATH to use some utility functions in `ez.py`
+- install `git` as `ez.py` uses `git` to get the name of the repository
 
 ---
 
