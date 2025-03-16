@@ -71,16 +71,16 @@ def parse_infowriter_content(content: str) -> list[tuple]:
     return sorted_time_markers
 
 
-def write_to_pbf(sorted_time_markers: list, output_file: str) -> None:
+def write_to_pbf(sorted_time_markers: list, output_file: str, offset_ms:int) -> None:
     """Convert the bookmarks into format of .pbf file"""
     with open(output_file, "w", encoding="utf-8") as file:
         file.write("[Bookmark]\n")
         for i, (ms, text) in enumerate(sorted_time_markers):
-            adjusted_ms = max(0, ms - 10000)  # subtract 10 seconds to get better start time, as usually the time marker is the end of a moment
+            adjusted_ms = max(0, ms + offset_ms)
             file.write(f"{i}={adjusted_ms}*{text}*\n")
 
 
-def convert_infowriter_to_pbf(input_file: str, output_file: str) -> None:
+def convert_infowriter_to_pbf(input_file: str, output_file: str, offset_ms: int) -> None:
     """Convert .infowriter file to .pbf format"""
     with open(input_file, "r", encoding="utf-8") as file:
         content = file.read()
@@ -90,7 +90,7 @@ def convert_infowriter_to_pbf(input_file: str, output_file: str) -> None:
     if (
         sorted_time_markers != []
     ):  # Only write to .pbf if there are meaningful time markers
-        write_to_pbf(sorted_time_markers, output_file)
+        write_to_pbf(sorted_time_markers, output_file, offset_ms)
 
 
 def find_infowriter_files(directory_path: str) -> list:
@@ -119,10 +119,20 @@ def batch_convert_infowriter_to_pbf(directory_path: str) -> None:
         print("Cancelling conversion...")
         return
 
+    # Ask for offset in seconds
+    offset_input = input("Enter timestamp offset in seconds (default: -10): ").strip()
+    try:
+        offset_seconds = int(offset_input) if offset_input else -10
+        offset_ms = offset_seconds * 1000
+        print(f"Using {offset_seconds} seconds ({offset_ms}ms) offset")
+    except ValueError:
+        offset_ms = -10000 # subtract 10 seconds to get better start time, as usually the time marker is the end of a moment
+        print("Invalid input, using default 10 seconds (10000ms) offset")
+
     for file in infowriter_file_list:
         # Get the file name and append .pbf extension
         output_file = os.path.splitext(file)[0] + ".pbf"
-        convert_infowriter_to_pbf(file, output_file)
+        convert_infowriter_to_pbf(file, output_file, offset_ms)
     print("Converted .infowriter files to .pbf if there are meaningful time markers.")
 
     # Confirm moving the .infowriter files to trash
