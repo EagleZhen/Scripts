@@ -18,7 +18,10 @@ location_dict=data["aliases"]
 
 change_list = [] # list of files to be moved and their corresponding destination path
 for file in file_list:
-	# assume the file name format is "<prefix> <friend> <original file name>" 
+	# assume the file name format is "<prefix> <friend> <original file name>"
+	if (len(file.split(' '))<3):
+		print (f"Skipped \"{file}\" because it does not follow the naming convention.")
+		continue
 	prefix = file.split(' ')[0] # the game alias
 	friend = file.split(' ')[1] # whether play with friends or single player
 
